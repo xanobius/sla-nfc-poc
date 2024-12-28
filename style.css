@@ -1,0 +1,13 @@
+#nfcStatus{
+    border: 1px solid #000;
+    margin: 2rem 0;
+    width:2rem;
+    height:2rem;
+    background-color: antiquewhite;
+    &.green {
+        background-color: green;
+    }
+    &.red {
+        background-color: red;
+    }
+}

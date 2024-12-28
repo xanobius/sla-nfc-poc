@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    f(! ("NDEFReader" in window)){
+        writeStat('No NFC Reader support');
+    }else{
+        ndef = new sNDEFReader();
+        ndef.addEventListener("readingerror", () => {
+            writeStat("Argh! Cannot read data from the NFC tag. Try another one?");
+        });
+
+        /** @var NDEFRecord message */
+        ndef.addEventListener("reading", ({ message, serialNumber }) => {
+            console.log(message);
+            console.log(serialNumber);
+            writeStat(`> Serial Number: ${serialNumber}`);
+            writeStat(`> Records: (${message.records.length})`);
+            message.records.forEach((rec, i) => {
+                writeStat(`Record ${i} has type ${rec.recordType}`);
+                if(rec.recordType === 'text'){
+                    writeStat((new TextDecoder()).decode(rec.data));
+                }
+
+            })
+        });
+
+        writeStat('Yay, NFC Reader support');
+    }
+</script>
+</body>
+</html>

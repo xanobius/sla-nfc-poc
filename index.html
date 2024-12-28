@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/md5.js"></script>
+    <script src="js/main.js?v=2" defer type="module"></script>
+    <link rel="stylesheet" href="css/pico.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+<main class="container">
+    <h1>Swiss Laravel Association - Meetup</h1>
+
+    <section id="client-login" class="screen hidden">
+        <h2>Authorize client</h2>
+        <p>
+            Please enter the code for the event, to start
+            accepting sign-ins by member cards
+        </p>
+        <div>
+            <label>
+                Code
+                <input type="text" id="client-code">
+            </label>
+            <article aria-busy="true" id="client-authorize-loader" class="hidden"></article>
+            <button id="client-authorize">authorize</button>
+        </div>
+    </section>
+
+    <section id="scan" class="screen">
+        <h2>Scan your card to sign in!</h2>
+        <p>
+            Here shall appear some shiny gif, demonstrating the scanning of a card for complete idiots or something
+            like that...
+        </p>
+        <button id="tmp-card-correct">simulate member card</button>
+        <button id="tmp-card-err" class="secondary">wrong card</button>
+        <button id="tmp-card-content" class="secondary">wrong content</button>
+    </section>
+
+    <section id="signed" class="screen hidden">
+        <h2>Sign in complete!</h2>
+
+        <p>
+            A heartily welcome to you, <span id="member-name"></span>.<br>
+            This is your meetup number <span id="event-count"></span>.<br>
+            Have fun with the presentation and don't forget to connect with other artisans!
+        </p>
+        <button id="back">Back to sign in</button>
+    </section>
+
+    <section id="invalid" class="screen hidden">
+        <h2>Invalid Device</h2>
+        <p>
+            This app only works with mobile devices and browsers who support Web NFC.<br>
+            See <a href="https://caniuse.com/?search=NDEFReader">can i use dot com</a>.
+        </p>
+    </section>
+
+
+    <footer>
+        <div>
+            <span>Status: </span>
+            <span id="status-message"></span>
+        </div>
+    </footer>
+</main>
+
+</body>
+</html>
